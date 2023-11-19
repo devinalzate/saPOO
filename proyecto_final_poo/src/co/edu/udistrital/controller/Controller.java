@@ -8,7 +8,7 @@ package co.edu.udistrital.controller;
 public class Controller {
 
     public Controller() {
-        System.out.println("saPOO");
+        
     }
     
 }
