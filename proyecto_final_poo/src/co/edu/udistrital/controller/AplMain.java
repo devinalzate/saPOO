@@ -13,7 +13,7 @@ public class AplMain {
      * @param args: argumetos y retornos del programa
      */
     public static void main(String[] args) {
-        Control control = new Control();
+        Controller  control = new Controller();
     }
     
 }
