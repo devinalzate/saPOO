@@ -68,6 +68,12 @@ public class Usuario  extends  ListaParejas implements CupoTarjeta {
     public Genero getGenero() {
         return genero;
     }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+    
+    
     
     //Método encargado de agregar parejas al listado protegido de parejas.
 

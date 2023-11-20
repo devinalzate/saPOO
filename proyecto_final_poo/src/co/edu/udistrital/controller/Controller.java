@@ -1,88 +1,86 @@
 package co.edu.udistrital.controller;
 
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import co.edu.udistrital.model.Genero;
+import co.edu.udistrital.model.Usuario;
+import co.edu.udistrital.view.VentanaEmergente;
+import co.edu.udistrital.view.VentanaRegistro;
+import java.util.HashSet;
+
+
 
 /**
  *
  * @author DEVIN ALZATE - SERGIO MENDIVELOS - JHON O'MEARA
  */
 public class Controller {
+    
+    private VentanaRegistro v_registro;
+    private VentanaEmergente ventanaEmergente = new VentanaEmergente();
+    private HashSet<Usuario> directorio= new HashSet<Usuario>();
+    private Usuario x; 
 
-    private static String correoBase = "nikomendi0728@gmail.com";
-    private static String contraseñaBase = "cqlaaecmyncchjeh";
-    private String correoDestinatario;
-    private static String asuntoCorreo = "Registro exitoso";
-    private static String mensajeCorreo = "PENDIENTE "; //OJOOOO PENDIENTE MENSAJE :)
- 
-    private Properties mProperties;
-    private Session mSesion;
-    private MimeMessage mCorreo;
-    
-    //Método constructor de Controller
-    
     public Controller() {
         
+        v_registro = new VentanaRegistro(this);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                v_registro.setVisible(true);
+            }
+        });
     }
+
     
-   //=========================================================================================================================================================================================
-    
-    // Este método se encarga de crear el correo a enviar.
-    
-    public void crearCorreo(){
         
-   mProperties =  new Properties();
-
-mProperties.put("mail.smtp.host", "smtp.gmail.com"); mProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-mProperties.setProperty("mail.smtp.starttls.enable", "true"); mProperties.setProperty("mail.smtp.port", "587"); mProperties.setProperty("mail.smtp.user", correoBase);
-mProperties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
-mProperties.setProperty("mail.smtp.auth", "true");
-
-
-mSesion = Session.getDefaultInstance (mProperties);
-   
-          mCorreo = new MimeMessage(mSesion);
-        try {
-            mCorreo.setFrom(new InternetAddress(correoBase));
-            mCorreo.setRecipient(Message.RecipientType.TO, new InternetAddress(correoDestinatario));
-            mCorreo.setSubject(asuntoCorreo);
-            mCorreo.setText(mensajeCorreo, "ISO-8859-1", "html");
-      
-
-    }   catch (AddressException ex) {  
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MessagingException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-}
-    //=========================================================================================================================================================================================
     
-    // Este método se encarga de enviar el correo creado con anterioridad.
-      public void enviarCorreo(){
+    
+    public void crearUsuario(){
+        x = new Usuario(null, null, null, null);
+        if(v_registro.getNombreUsuario().getText().equals("")||
+           v_registro.getContraseña().getText().equals("")||
+           v_registro.getCorreoElectronico().getText().equals("")){
+            
+       ventanaEmergente.mensaje("Coloque todos los datos para poder registrar al usuario");
+        }else {
+                 String alias = v_registro.getNombreUsuario().getText();
+        String contraseña = v_registro.getContraseña().getText();
+        String aux = v_registro.getCorreoElectronico().getText();
+        String correo = "";
+        for(int i = 0 ; i<aux.length(); i++){
+            
+        }
+        Genero genero = null;
         
-        Transport mTransport;
-       
-        try {
+        switch (String.valueOf(v_registro.getGenero().getSelectedItem())) {
+            case "Masculino":
+                genero=Genero.Masculino;
+                break;
+                
+            case "Femenino":
+                genero=Genero.Femenino;
+                break;
             
-            mTransport = mSesion.getTransport("smtp");
-            mTransport.connect(correoBase, contraseñaBase);
-            mTransport.sendMessage(mCorreo, mCorreo.getRecipients(Message.RecipientType.TO));
-            mTransport.close();
+            case "39 tipos de Gay":
+                genero=Genero.TreintaYNueve_Tipos_de_Gay;
+                break;
+        }
+        
+        x.setAlias(alias);
+        x.setContraseña(contraseña);
+        x.setCorreo(correo);
+        x.setGenero(genero);
+        
+        directorio.add(x);
+        for(Usuario user : directorio){
             
-        } catch (MessagingException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-
-   
- }
-
-    
-}
+            ventanaEmergente.mensaje(user.getAlias());
+            
+            
+        }
+        v_registro.setVisible(false);
+        ventanaEmergente.mensaje("El usuario fue registrado con èxito");
+        
+                
+                
+                }
+        }
+    }

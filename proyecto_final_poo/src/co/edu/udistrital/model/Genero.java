@@ -7,5 +7,5 @@ package co.edu.udistrital.model;
  * Esta clase es la encargada de definir los objetos unicos de tipo genero
  */
 public enum Genero {
-    Masculino, Femenino;
+    Masculino, Femenino,TreintaYNueve_Tipos_de_Gay;
 }
