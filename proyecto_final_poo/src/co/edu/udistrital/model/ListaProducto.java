@@ -7,5 +7,5 @@ package co.edu.udistrital.model;
  * Esta clase es la encargada de definir los objetos unicos de tipo producto
  */
 public enum ListaProducto {
-    manzana, arroz, leche, frijoles, condones;
+    Manzana, Arroz, Leche, Frijoles, Condones;
 }
