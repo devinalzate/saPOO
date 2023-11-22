@@ -29,7 +29,7 @@ public class EnviarCorreo {
     private static String contraseñaBase = "cqlaaecmyncchjeh";
     private String correoDestinatario;
     private static String asuntoCorreo = "Registro exitoso";
-    private static String mensajeCorreo = "PENDIENTE "; //OJOOOO PENDIENTE MENSAJE :)
+    private String mensajeCorreo; 
  
     private Properties mProperties;
     private Session mSesion;
@@ -59,7 +59,9 @@ mSesion = Session.getDefaultInstance (mProperties);
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MessagingException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+        }  catch (Exception e){
+             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, e);
+        }
 }
     //=========================================================================================================================================================================================
     
@@ -81,4 +83,28 @@ mSesion = Session.getDefaultInstance (mProperties);
 
    
  }
+
+      //=========================================================================================================================================================================================
+    
+    // Get
+    public String getCorreoDestinatario() {
+        return correoDestinatario;
+    }
+
+    // Set
+    public void setCorreoDestinatario(String correoDestinatario) {
+        this.correoDestinatario = correoDestinatario;
+    }
+
+    public String getMensajeCorreo() {
+        return mensajeCorreo;
+    }
+
+    public void setMensajeCorreo(String mensajeCorreo) {
+        this.mensajeCorreo = mensajeCorreo;
+    }
+    
+    
+      
+      
 }

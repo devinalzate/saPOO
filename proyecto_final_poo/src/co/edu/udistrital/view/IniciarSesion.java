@@ -4,6 +4,8 @@
  */
 package co.edu.udistrital.view;
 
+import co.edu.udistrital.controller.Controller;
+
 /**
  *
  * @author jhono
@@ -13,10 +15,22 @@ public class IniciarSesion extends javax.swing.JFrame {
     /**
      * Creates new form IniciarSesion
      */
+    
+     Controller gestor;
+     
+     public IniciarSesion(Controller gestor) {
+         
+         initComponents();
+        this.gestor = gestor;
+     }
+        
+     
     public IniciarSesion() {
         initComponents();
     }
-
+    
+    
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

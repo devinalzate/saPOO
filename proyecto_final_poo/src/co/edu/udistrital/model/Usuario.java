@@ -72,6 +72,11 @@ public class Usuario  extends  ListaParejas implements CupoTarjeta {
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
+
+    public int getCupo() {
+        return cupo;
+    }
+    
     
     
     
