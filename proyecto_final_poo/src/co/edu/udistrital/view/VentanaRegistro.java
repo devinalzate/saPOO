@@ -5,6 +5,7 @@
 package co.edu.udistrital.view;
 
 import co.edu.udistrital.controller.Controller;
+import co.edu.udistrital.controller.ControllerRegistroUsuario;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -15,15 +16,15 @@ import javax.swing.JTextField;
  */
 public class VentanaRegistro extends javax.swing.JFrame {
 
-    Controller gestor;
+    ControllerRegistroUsuario registro;
     /**
      * Creates new form VentanaRegistro
      */
     
    
-    public VentanaRegistro(Controller gestor) {
+    public VentanaRegistro(ControllerRegistroUsuario registro) {
          initComponents();
-        this.gestor = gestor;
+        this.registro = registro;
     }
     
      public VentanaRegistro() {
@@ -166,7 +167,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
          
-      gestor.crearUsuario();
+      registro.crearUsuario();
 
         
     }//GEN-LAST:event_botonRegistrarseActionPerformed
