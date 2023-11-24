@@ -14,7 +14,10 @@ import java.util.HashSet;
  * @author DEVIN ALZATE - SERGIO MENDIVELOS - JHON O'MEARA
  */
 public class Controller {
-    
+    private ControllerIniciarSesion controllerIniciarSesion;
+    private ControllerRegistroUsuario controllerVentanaRegistro;
+    private ControllerSesionPrincipal controllerVentanaSesionPrincipal;
+    private ControllerVentanaPrincipal controllerVentanaPrincipal;
     
     private IniciarSesion sesion;
     private VentanaEmergente ventanaEmergente = new VentanaEmergente();
@@ -22,27 +25,38 @@ public class Controller {
     private HashSet<Usuario> directorio = dic.getDirectorio();
     private Usuario x; 
     EnviarCorreo enviarcorreo = new EnviarCorreo();
-    ControllerRegistroUsuario registro;
+    ;
 
     public Controller() {
-        
- 
-        registro=new ControllerRegistroUsuario();
-        
-        
-        sesion = new IniciarSesion(this);
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                sesion.setVisible(false);
-            }
-        });
+        controllerIniciarSesion = new ControllerIniciarSesion();
+        controllerVentanaRegistro = new ControllerRegistroUsuario();
+        controllerVentanaSesionPrincipal = new ControllerSesionPrincipal();
+        controllerVentanaPrincipal = new ControllerVentanaPrincipal();
     }
-    public void MostrarVentanaPrincipal(){
-       
-       
+    public void mostrarVentanaPrincipal(){
+        controllerIniciarSesion.OcultarIniciarSesion();
+        controllerVentanaRegistro.OcultarVentanaRegistro();
+        controllerVentanaSesionPrincipal.OcultarSesionPrincipal();
+        controllerVentanaPrincipal.MostrarVentanaPrincipal();
     }
-
-
+    public void mostrarVentanaRegistro() {
+        controllerIniciarSesion.OcultarIniciarSesion();
+        controllerVentanaRegistro.MostrarVentanaRegistro();
+        controllerVentanaSesionPrincipal.OcultarSesionPrincipal();
+        controllerVentanaPrincipal.OcultarVentanaPrincipal();
+    }
+    public void mostrarVentanaIniciarSesion() {
+        controllerIniciarSesion.MostrarIniciarSesion();
+        controllerVentanaRegistro.OcultarVentanaRegistro();
+        controllerVentanaSesionPrincipal.OcultarSesionPrincipal();
+        controllerVentanaPrincipal.OcultarVentanaPrincipal();
+    }
+    public void mostrarVentanaSesionPrincipal() {
+        controllerIniciarSesion.OcultarIniciarSesion();
+        controllerVentanaRegistro.OcultarVentanaRegistro();
+        controllerVentanaSesionPrincipal.MostrarSesionPrincipal();
+        controllerVentanaPrincipal.OcultarVentanaPrincipal();
+    }
 //=========================================================================================================================================================================================
     
     // Mètodo encargado de las validaciones necesarias para registrar un usuario.  
