@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  *
  * @author jhono
  */
-public class Prueba {
+public class VentanaEmergente {
     public void mensaje(String a){
         JOptionPane.showMessageDialog(null, a);
     }
