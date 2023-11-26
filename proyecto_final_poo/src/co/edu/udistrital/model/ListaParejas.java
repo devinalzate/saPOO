@@ -7,10 +7,18 @@ import java.util.ArrayList;
  *
  * @author DEVIN ALZATE
  */
-public abstract class ListaParejas {
+public class ListaParejas {
     
     protected ArrayList<Usuario> parejas = new ArrayList<Usuario>(); 
 
-    public abstract void agregarPareja(Usuario pareja);
+    public ArrayList<Usuario> getParejas() {
+        return parejas;
+    }
+
+    public void setParejas(ArrayList<Usuario> parejas) {
+        this.parejas = parejas;
+    }
+
+    
     
 }

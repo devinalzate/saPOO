@@ -12,20 +12,22 @@ import co.edu.udistrital.view.VentanaRegistro;
 import java.util.HashSet;
 
 /**
- *
- * @author jhono
+ *  Clase encargada de controlar la ventana de registrar el usuario
+ * @author DEVIN ALZATE - SERGIO MENDIVELOS - JHON O'MEARA
  */
 public class ControllerRegistroUsuario {
+    private Controller control;
     private VentanaRegistro v_registro;
-    private IniciarSesion sesion;
     private VentanaEmergente ventanaEmergente = new VentanaEmergente();
-    private Directorio dic = new Directorio();
-    private HashSet<Usuario> directorio = dic.getDirectorio();
     private Usuario x; 
     EnviarCorreo enviarcorreo = new EnviarCorreo();
 
-    public ControllerRegistroUsuario() {
-        v_registro = new VentanaRegistro(this);
+    /**
+     * Constructor que establece la visibilidad
+     */
+    public ControllerRegistroUsuario(Controller control) {
+        this.control = control;
+        v_registro = new VentanaRegistro(this,control);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 v_registro.setVisible(false);
@@ -34,7 +36,10 @@ public class ControllerRegistroUsuario {
     }
     
     
-    
+    /**
+     * Logica encargada de asignar valores a un nuevo usuario segun las entradas y añadir este a el directorio
+     * de los usuarios
+     */
     public void crearUsuario(){
         x = new Usuario(null, null, null, null);
         if(v_registro.getNombreUsuario().getText().equals("")||
@@ -79,7 +84,7 @@ public class ControllerRegistroUsuario {
             
                 correo = aux;
            
-                for(Usuario pers : directorio){
+                for(Usuario pers : control.getDir().getDirectorio()){
                     if(pers.getAlias().equals(alias)){
                    
                         ventanaEmergente.mensaje("El alias registrado ya existe");
@@ -101,7 +106,7 @@ public class ControllerRegistroUsuario {
        
         
         x.calcularCupoTarjeta();
-        directorio.add(x);
+        control.getDir().getDirectorio().add(x);
         
         enviarcorreo.setCorreoDestinatario(correo);
         enviarcorreo. setMensajeCorreo("Bienvenido al sistema HIDE&SEEK <br> <br>"
@@ -110,9 +115,10 @@ public class ControllerRegistroUsuario {
                 + "Y su cupo de la tarjeta es: " + x.getCupo());
         enviarcorreo.crearCorreo();
         enviarcorreo.enviarCorreo();
-         ventanaEmergente.mensaje("Se enviò un mensaje a su correo electrònico confirmando sus datos");
+        ventanaEmergente.mensaje("Se enviò un mensaje a su correo electrònico confirmando sus datos");
+        control.mostrarVentanaIniciarSesion();
         
-         for(Usuario user : directorio){
+         for(Usuario user : control.getDir().getDirectorio()){
           
              
          }

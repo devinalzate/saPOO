@@ -1,6 +1,7 @@
 
 package co.edu.udistrital.model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -8,8 +9,10 @@ import java.util.Random;
  * @author DEVIN ALZATE - SERGIO MENDIVELSO - JHON O'MEARA
  * Clase creadora de los objetos tipo usuario
  */
-public class Usuario  extends  ListaParejas implements CupoTarjeta { 
+public class Usuario implements CupoTarjeta { 
 
+    private ListaParejas listaParejas;
+    private ArrayList<Usuario> parejas; 
     private String alias;
     private String contraseña;
     private String correo;
@@ -32,6 +35,8 @@ public class Usuario  extends  ListaParejas implements CupoTarjeta {
         this.contraseña = contraseña;
         this.correo = correo;
         this.genero = genero;
+        listaParejas = new ListaParejas();
+        parejas = listaParejas.getParejas();
     }
 
     //Get
@@ -85,7 +90,6 @@ public class Usuario  extends  ListaParejas implements CupoTarjeta {
     /*
      * @param pareja: Pareja que se va a agregar a la lista de parejas del usuario.
     */
-    @Override
     
     public void agregarPareja(Usuario pareja) {
 

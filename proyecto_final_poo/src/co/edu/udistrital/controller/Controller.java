@@ -1,16 +1,11 @@
 package co.edu.udistrital.controller;
 
-import co.edu.udistrital.model.Genero;
 import co.edu.udistrital.model.Usuario;
-import co.edu.udistrital.view.IniciarSesion;
-import co.edu.udistrital.view.VentanaEmergente;
-import co.edu.udistrital.view.VentanaRegistro;
-import java.util.HashSet;
 
 
 
 /**
- *
+ * Ejecutar y darle un manejo a los datos manipulados en el programa
  * @author DEVIN ALZATE - SERGIO MENDIVELOS - JHON O'MEARA
  */
 public class Controller {
@@ -18,21 +13,24 @@ public class Controller {
     private ControllerRegistroUsuario controllerVentanaRegistro;
     private ControllerSesionPrincipal controllerVentanaSesionPrincipal;
     private ControllerVentanaPrincipal controllerVentanaPrincipal;
-    
-    private IniciarSesion sesion;
-    private VentanaEmergente ventanaEmergente = new VentanaEmergente();
-    private Directorio dic = new Directorio();
-    private HashSet<Usuario> directorio = dic.getDirectorio();
-    private Usuario x; 
-    EnviarCorreo enviarcorreo = new EnviarCorreo();
+    private Directorio dir;
+    private Usuario usuarioIniciado;
     ;
-
+    /**
+     * Inicializa los controladores de cada una de las ventanas.
+     */
     public Controller() {
-        controllerIniciarSesion = new ControllerIniciarSesion();
-        controllerVentanaRegistro = new ControllerRegistroUsuario();
+        dir = new Directorio();
+        controllerIniciarSesion = new ControllerIniciarSesion(this);
+        controllerVentanaRegistro = new ControllerRegistroUsuario(this);
         controllerVentanaSesionPrincipal = new ControllerSesionPrincipal();
-        controllerVentanaPrincipal = new ControllerVentanaPrincipal();
+        controllerVentanaPrincipal = new ControllerVentanaPrincipal(this);
     }
+// ==============================================================================================
+    
+    /**
+     * Metodo que asigna que ventanas se ocultan y muestran.
+     */
     public void mostrarVentanaPrincipal(){
         controllerIniciarSesion.OcultarIniciarSesion();
         controllerVentanaRegistro.OcultarVentanaRegistro();
@@ -57,18 +55,24 @@ public class Controller {
         controllerVentanaSesionPrincipal.MostrarSesionPrincipal();
         controllerVentanaPrincipal.OcultarVentanaPrincipal();
     }
-//=========================================================================================================================================================================================
-    
-    // Mètodo encargado de las validaciones necesarias para registrar un usuario.  
-    
-    
-    
-    //=========================================================================================================================================================================================
-    
-    // Este método se encarga de iniciar sesiòn
-    
-    public void iniciarSesion(){
-        
+
+    public Directorio getDir() {
+        return dir;
+    }
+
+    public void setDir(Directorio dir) {
+        this.dir = dir;
+    }
+
+    public Usuario getUsuarioIniciado() {
+        return usuarioIniciado;
+    }
+
+    public void setUsuarioIniciado(Usuario usuarioIniciado) {
+        this.usuarioIniciado = usuarioIniciado;
     }
     
-    }
+    
+    
+}
+  

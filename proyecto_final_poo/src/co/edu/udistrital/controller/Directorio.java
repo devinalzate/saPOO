@@ -9,8 +9,8 @@ import co.edu.udistrital.model.Usuario;
 import java.util.HashSet;
 
 /**
- *
- * @author jhono
+ *Clase encargada de controlar la ventana de la pantalla principal de cada usuario
+ * @author DEVIN ALZATE - SERGIO MENDIVELOS - JHON O'MEARA
  */
 public class Directorio {
     

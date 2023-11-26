@@ -7,16 +7,19 @@ package co.edu.udistrital.controller;
 import co.edu.udistrital.view.SesionPrincipal;
 
 /**
- *
- * @author jhono
+ *Clase encargada de controlar la ventana de la pantalla principal de cada usuario
+ * @author DEVIN ALZATE - SERGIO MENDIVELOS - JHON O'MEARA
  */
 public class ControllerSesionPrincipal {
     SesionPrincipal v_ventanaSesionPrincipal=new SesionPrincipal();
     
+    /**
+     * Constructor que establece la visibilidad
+     */
     public ControllerSesionPrincipal() {
     java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SesionPrincipal().setVisible(true);
+                new SesionPrincipal().setVisible(false);
             }
         });
     }

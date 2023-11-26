@@ -26,8 +26,8 @@ import javax.mail.internet.MimeMessage;
  */
 public class EnviarCorreo {
     
-    private static String correoBase = "nikomendi0728@gmail.com";
-    private static String contraseñaBase = "fsbekyxptbokydym";
+    private static String correoBase = "noseasapa04@gmail.com";
+    private static String contraseñaBase = "analxqqwaiwwtgdv";
     private String correoDestinatario;
     private static String asuntoCorreo = "Registro exitoso";
     private String mensajeCorreo; 

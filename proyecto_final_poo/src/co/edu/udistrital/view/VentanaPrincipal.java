@@ -4,18 +4,31 @@
  */
 package co.edu.udistrital.view;
 
+import co.edu.udistrital.controller.Controller;
+
 /**
  *
  * @author jhono
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    
+    private Controller control;
 
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+
     }
+
+    public VentanaPrincipal(Controller control) {
+        initComponents();
+        this.control = control;
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,8 +41,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bInicioSesion = new javax.swing.JButton();
+        bResgistrarse = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
@@ -38,9 +51,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButton1.setText("Admin In");
 
-        jButton3.setText("Inciar Secion");
+        bInicioSesion.setText("Iniciar Sesion");
+        bInicioSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInicioSesionActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Registrarse");
+        bResgistrarse.setText("Registrarse");
+        bResgistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bResgistrarseActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Bienvenido A HelioNed");
@@ -60,8 +83,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(139, 139, 139)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                    .addComponent(bResgistrarse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bInicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
                 .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
@@ -69,17 +92,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(bInicioSesion)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(bResgistrarse)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(232, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInicioSesionActionPerformed
+        control.mostrarVentanaIniciarSesion();
+    }//GEN-LAST:event_bInicioSesionActionPerformed
+
+    private void bResgistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResgistrarseActionPerformed
+        control.mostrarVentanaRegistro();
+    }//GEN-LAST:event_bResgistrarseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,10 +144,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bInicioSesion;
+    private javax.swing.JButton bResgistrarse;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

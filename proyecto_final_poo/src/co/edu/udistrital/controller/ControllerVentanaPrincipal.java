@@ -7,15 +7,23 @@ package co.edu.udistrital.controller;
 import co.edu.udistrital.view.VentanaPrincipal;
 
 /**
- *
- * @author jhono
+ *Clase encargada de controlar la ventana de la pantalla principal de cada usuario
+ * @author DEVIN ALZATE - SERGIO MENDIVELOS - JHON O'MEARA
  */
 public class ControllerVentanaPrincipal {
-    VentanaPrincipal v_ventanaPrincipal=new VentanaPrincipal();
-    public ControllerVentanaPrincipal() {
+    
+    private Controller control;
+    private VentanaPrincipal v_ventanaPrincipal;
+    
+    /**
+     * Constructor que establece la visibilidad
+     */
+    public ControllerVentanaPrincipal(Controller control) {
+        this.control = control;
+        v_ventanaPrincipal=new VentanaPrincipal(control);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                 v_ventanaPrincipal.setVisible(true);
             }
         });
     }
