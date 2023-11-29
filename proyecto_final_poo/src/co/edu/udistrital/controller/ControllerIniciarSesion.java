@@ -52,6 +52,9 @@ public class ControllerIniciarSesion {
             v_emergente.mensaje("Bienvenido " + control.getUsuarioIniciado().getAlias());
             
             control.mostrarVentanaSesionPrincipal();
+            
+            v_iniciarSesion.getTextAlias().setText("");
+            v_iniciarSesion.getTextContraseña().setText("");
         }
     }
         

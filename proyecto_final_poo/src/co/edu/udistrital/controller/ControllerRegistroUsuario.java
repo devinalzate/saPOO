@@ -84,6 +84,8 @@ public class ControllerRegistroUsuario {
             
                 correo = aux;
            
+                
+                try{
                 for(Usuario pers : control.getDir().getDirectorio()){
                     if(pers.getAlias().equals(alias)){
                    
@@ -124,6 +126,9 @@ public class ControllerRegistroUsuario {
          }
                 }
             }
+                }catch(Exception e){
+                    
+                }
         aux2=' ';   
         } 
                 }

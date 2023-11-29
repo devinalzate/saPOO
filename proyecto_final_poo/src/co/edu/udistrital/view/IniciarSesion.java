@@ -159,6 +159,8 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private void botonVolverPantallaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverPantallaPrincipalActionPerformed
         control.mostrarVentanaPrincipal();
+        getTextAlias().setText("");
+        getTextContraseña().setText("");
     }//GEN-LAST:event_botonVolverPantallaPrincipalActionPerformed
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed

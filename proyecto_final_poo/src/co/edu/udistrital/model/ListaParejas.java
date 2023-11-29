@@ -9,8 +9,9 @@ import java.util.ArrayList;
  */
 public class ListaParejas {
     
-    protected ArrayList<Usuario> parejas = new ArrayList<Usuario>(); 
+    private ArrayList<Usuario> parejas = new ArrayList<Usuario>(); 
 
+    
     public ArrayList<Usuario> getParejas() {
         return parejas;
     }

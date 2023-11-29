@@ -81,6 +81,12 @@ public class Usuario implements CupoTarjeta {
     public int getCupo() {
         return cupo;
     }
+
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
+    }
+    
+    
     
     
     
@@ -105,4 +111,10 @@ public class Usuario implements CupoTarjeta {
     this.cupo = rnd.nextInt(1000000, 5000000);
     
     }
+
+    public ListaParejas getListaParejas() {
+        return listaParejas;
+    }
+    
+    
 }

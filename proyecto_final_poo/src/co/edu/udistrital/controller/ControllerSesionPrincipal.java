@@ -37,14 +37,35 @@ public class ControllerSesionPrincipal {
        String nombrePareja = v_emergente.escribirInput("Escriba el nombre del usuario al que quiere agregar a su lista de parejas.");
        String mensaje = null;
        for(Usuario usuarioARevision : control.getDir().getDirectorio()){
+         
            
-        if(usuarioARevision.getAlias().equals(nombrePareja)){
+           if(nombrePareja.equals(control.getUsuarioIniciado().getAlias())){
+               
+               mensaje = "No puede agregarse a si mismo como pareja";
+               
+               break;
+               
+           }
+               
+               else if(usuarioARevision.getAlias().equals(nombrePareja)){
+                   
+                   if(control.getUsuarioIniciado().getListaParejas().getParejas().contains(usuarioARevision)){
+               
+               mensaje = "Esta pareja ya ha sido agregada anteriormente";
+               
+               break;
+               
+           } else {
 
                     control.getUsuarioIniciado().agregarPareja(usuarioARevision);
                     usuarioARevision.agregarPareja(control.getUsuarioIniciado());
                    mensaje = "Su pareja ha sido agregada";
                     break;
-            } else {
+            
+                }
+                
+            }
+                else {
             
             mensaje = "El usuario no existe";
         }
@@ -60,4 +81,50 @@ public class ControllerSesionPrincipal {
     public void OcultarSesionPrincipal(){
         v_ventanaSesionPrincipal.setVisible(false);
     }
+    
+    public void asignarCupo(){
+        
+        String parejaCupo = v_emergente.escribirInput("Esciba el nombre de la pareja a la que repartir el cupo");
+        
+        
+        String mensaje = null;
+        
+        for(Usuario parejaARevision : control.getUsuarioIniciado().getListaParejas().getParejas()){
+            
+        if(parejaARevision.getAlias().equals(parejaCupo)){
+
+            
+           String valor = v_emergente.escribirInput("Usted tiene un cupo de " + control.getUsuarioIniciado().getCupo() + "Se le asignará a su pareja la cantidad que que registre a continuación: ");
+           try{
+           if(Integer.parseInt(valor)>control.getUsuarioIniciado().getCupo()){
+               
+               mensaje ="No tiene suficiente dinero para transferirle a su pareja";
+               break;
+           } else{
+               
+               control.getUsuarioIniciado().setCupo(control.getUsuarioIniciado().getCupo() - Integer.parseInt(valor));
+               parejaARevision.setCupo( parejaARevision.getCupo() + Integer.parseInt(valor));        
+               
+               mensaje ="La transferencia fue exitosa";
+
+                    break;
+                    }
+           }catch(Exception e){
+               
+               mensaje ="Error, ingrese un número entero";
+break;  
+           
+         }
+           }else{ 
+            mensaje = "Ese usuario no se encuentra dentro de sus parejas";
+        }
+           
+        }
+           v_emergente.mensaje(mensaje);
+        
+    }
+    
+    
+    
+    
 }

@@ -60,6 +60,11 @@ public class SesionPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Cupo Tarjeta:");
 
         botonDistribuirCupo.setText("Distribuir Cupo:");
+        botonDistribuirCupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDistribuirCupoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Horario Compra:");
 
@@ -230,6 +235,10 @@ public class SesionPrincipal extends javax.swing.JFrame {
         sesionPrincipal.agregarParejas();
         
     }//GEN-LAST:event_botonAgregarParejaActionPerformed
+
+    private void botonDistribuirCupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDistribuirCupoActionPerformed
+        sesionPrincipal.asignarCupo();
+    }//GEN-LAST:event_botonDistribuirCupoActionPerformed
 
     /**
      * @param args the command line arguments
