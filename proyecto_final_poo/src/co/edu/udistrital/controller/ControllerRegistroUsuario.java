@@ -41,16 +41,27 @@ public class ControllerRegistroUsuario {
      * de los usuarios
      */
     public void crearUsuario(){
-        x = new Usuario(null, null, null, null);
+        x = new Usuario(null,0 , null, null, null);
+        int edad;
         if(v_registro.getNombreUsuario().getText().equals("")||
            v_registro.getContraseña().getText().equals("")||
-           v_registro.getCorreoElectronico().getText().equals("")){
+           v_registro.getCorreoElectronico().getText().equals("")||
+           v_registro.getEdad().getText().equals(""))        {
             
        ventanaEmergente.mensaje("Coloque todos los datos para poder registrar al usuario");
+       
         }else {
+            
+            try{
+                 edad = Integer.parseInt(v_registro.getEdad().getText());
+            }catch(Exception E){
+                ventanaEmergente.mensaje("Ingrese un numero entero");
+            }
+        edad = Integer.parseInt(v_registro.getEdad().getText());
         String alias = v_registro.getNombreUsuario().getText();
         String contraseña = v_registro.getContraseña().getText();
         String aux = v_registro.getCorreoElectronico().getText();
+        
         String correo = "";
         char aux2 = ' ';  
         for(int i = 0 ; i< aux.length(); i++){
@@ -98,12 +109,13 @@ public class ControllerRegistroUsuario {
             x.setContraseña(contraseña);
             x.setCorreo(correo);
             x.setGenero(genero);
+            x.setEdad(edad);
         v_registro.setVisible(false);
         ventanaEmergente.mensaje("El usuario fue registrado con èxito");
         v_registro.getNombreUsuario().setText("");
         v_registro.getContraseña().setText("");
         v_registro.getCorreoElectronico().setText("");
-        
+        v_registro.getEdad().setText("");
         
        
         

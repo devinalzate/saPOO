@@ -17,7 +17,7 @@ public class Directorio {
     private HashSet<Usuario> directorio= new HashSet<Usuario>();
 
     public Directorio() {
-        Usuario devinAdmin = new Usuario("Devin","devin@gmail.com","SantaFeManda",Genero.TreintaYNueve_Tipos_de_Gay);
+        Usuario devinAdmin = new Usuario("Devin",18,"devin@gmail.com","SantaFeManda",Genero.TreintaYNueve_Tipos_de_Gay);
          directorio.add(devinAdmin);
     }
 

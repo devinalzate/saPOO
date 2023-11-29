@@ -14,6 +14,7 @@ public class Usuario implements CupoTarjeta {
     private ListaParejas listaParejas;
     private ArrayList<Usuario> parejas; 
     private String alias;
+    private int edad;
     private String contraseña;
     private String correo;
     private Genero genero;
@@ -30,11 +31,12 @@ public class Usuario implements CupoTarjeta {
      */
     
     
-    public Usuario(String alias, String correo, String contraseña, Genero genero) {
+    public Usuario(String alias,int edad, String correo, String contraseña, Genero genero) {
         this.alias = alias;
         this.contraseña = contraseña;
         this.correo = correo;
         this.genero = genero;
+        this.edad= edad;
         listaParejas = new ListaParejas();
         parejas = listaParejas.getParejas();
     }
@@ -84,6 +86,14 @@ public class Usuario implements CupoTarjeta {
 
     public void setCupo(int cupo) {
         this.cupo = cupo;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
     
     
