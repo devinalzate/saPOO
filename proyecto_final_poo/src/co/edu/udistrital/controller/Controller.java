@@ -14,7 +14,8 @@ public class Controller {
     private ControllerSesionPrincipal controllerVentanaSesionPrincipal;
     private ControllerVentanaPrincipal controllerVentanaPrincipal;
     private Directorio dir;
-    private Usuario usuarioIniciado;
+    private Usuario usuarioIniciado=null;
+    private Usuario nuevaPareja = null;
     ;
     /**
      * Inicializa los controladores de cada una de las ventanas.
@@ -23,7 +24,7 @@ public class Controller {
         dir = new Directorio();
         controllerIniciarSesion = new ControllerIniciarSesion(this);
         controllerVentanaRegistro = new ControllerRegistroUsuario(this);
-        controllerVentanaSesionPrincipal = new ControllerSesionPrincipal();
+        controllerVentanaSesionPrincipal = new ControllerSesionPrincipal(this);
         controllerVentanaPrincipal = new ControllerVentanaPrincipal(this);
     }
 // ==============================================================================================
@@ -71,6 +72,16 @@ public class Controller {
     public void setUsuarioIniciado(Usuario usuarioIniciado) {
         this.usuarioIniciado = usuarioIniciado;
     }
+
+    public Usuario getNuevaPareja() {
+        return nuevaPareja;
+    }
+
+    public void setNuevaPareja(Usuario nuevaPareja) {
+        this.nuevaPareja = nuevaPareja;
+    }
+    
+    
     
     
     

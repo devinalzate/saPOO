@@ -14,4 +14,10 @@ public class VentanaEmergente {
     public void mensaje(String a){
         JOptionPane.showMessageDialog(null, a);
     }
+    
+    public String escribirInput(String a){
+        
+        String b = JOptionPane.showInputDialog(a);
+        return b;  
+    }
 }

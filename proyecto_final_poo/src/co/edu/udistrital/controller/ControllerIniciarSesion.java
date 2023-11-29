@@ -39,16 +39,22 @@ public class ControllerIniciarSesion {
             if(usuarioARevision.getAlias().equals(aux)){
                 if(usuarioARevision.getContraseña().equals(aux1)){
                     control.setUsuarioIniciado(usuarioARevision);
-                    v_emergente.mensaje("Bienvenido " + usuarioARevision.getAlias());
                     break;
-                }else {
-                v_emergente.mensaje("La contraseña es incorrecta");
-            }
-            }else {
-                v_emergente.mensaje("El alias registrado no existe");
+                }
             }
         }
+       
+        if(control.getUsuarioIniciado()== null){
+
+            v_emergente.mensaje("Usuario o contraseña incorrectos");
+             
+        } else {
+            v_emergente.mensaje("Bienvenido " + control.getUsuarioIniciado().getAlias());
+            
+            control.mostrarVentanaSesionPrincipal();
+        }
     }
+        
     
     public void MostrarIniciarSesion(){
         v_iniciarSesion.setVisible(true);

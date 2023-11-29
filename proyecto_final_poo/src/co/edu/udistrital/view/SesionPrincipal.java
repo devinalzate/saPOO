@@ -4,6 +4,10 @@
  */
 package co.edu.udistrital.view;
 
+import co.edu.udistrital.controller.Controller;
+import co.edu.udistrital.controller.ControllerIniciarSesion;
+import co.edu.udistrital.controller.ControllerSesionPrincipal;
+
 /**
  *
  * @author jhono
@@ -13,10 +17,20 @@ public class SesionPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form PantallaPrincipal
      */
+    
+    Controller control;
+    ControllerSesionPrincipal sesionPrincipal;
+    
     public SesionPrincipal() {
         initComponents();
     }
-
+    
+     public SesionPrincipal(Controller control,  ControllerSesionPrincipal sesionPrincipal) {
+         
+         initComponents();
+        this.sesionPrincipal = sesionPrincipal;
+        this.control = control;
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,6 +109,11 @@ public class SesionPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Cantidad de parejas:");
 
         botonAgregarPareja.setText("Agregar Pareja");
+        botonAgregarPareja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarParejaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -205,6 +224,12 @@ public class SesionPrincipal extends javax.swing.JFrame {
     private void botonHorarioCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonHorarioCompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonHorarioCompraActionPerformed
+
+    private void botonAgregarParejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarParejaActionPerformed
+        
+        sesionPrincipal.agregarParejas();
+        
+    }//GEN-LAST:event_botonAgregarParejaActionPerformed
 
     /**
      * @param args the command line arguments

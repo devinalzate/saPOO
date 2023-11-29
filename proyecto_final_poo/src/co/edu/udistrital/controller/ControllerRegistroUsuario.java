@@ -53,7 +53,7 @@ public class ControllerRegistroUsuario {
         String aux = v_registro.getCorreoElectronico().getText();
         String correo = "";
         char aux2 = ' ';  
-        for(int i = 0 ; i<aux.length(); i++){
+        for(int i = 0 ; i< aux.length(); i++){
             
             if(aux.charAt(i) == '@'){
                 aux2 = '@'; 
