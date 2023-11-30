@@ -6,10 +6,8 @@ package co.edu.udistrital.controller;
 
 import co.edu.udistrital.model.Genero;
 import co.edu.udistrital.model.Usuario;
-import co.edu.udistrital.view.IniciarSesion;
 import co.edu.udistrital.view.VentanaEmergente;
 import co.edu.udistrital.view.VentanaRegistro;
-import java.util.HashSet;
 
 /**
  *  Clase encargada de controlar la ventana de registrar el usuario
@@ -40,7 +38,7 @@ public class ControllerRegistroUsuario {
      * Logica encargada de asignar valores a un nuevo usuario segun las entradas y añadir este a el directorio
      * de los usuarios
      */
-    public void crearUsuario(){
+    public String crearUsuario(){
         x = new Usuario(null,0 , null, null, null);
         int edad;
         if(v_registro.getNombreUsuario().getText().equals("")||
@@ -55,9 +53,9 @@ public class ControllerRegistroUsuario {
             try{
                  edad = Integer.parseInt(v_registro.getEdad().getText());
             }catch(Exception E){
-                ventanaEmergente.mensaje("Ingrese un numero entero");
+                ventanaEmergente.mensaje("Ingrese un numero entero para la edad");
+                return null;
             }
-        edad = Integer.parseInt(v_registro.getEdad().getText());
         String alias = v_registro.getNombreUsuario().getText();
         String contraseña = v_registro.getContraseña().getText();
         String aux = v_registro.getCorreoElectronico().getText();
@@ -95,21 +93,35 @@ public class ControllerRegistroUsuario {
             
                 correo = aux;
            
+                boolean confirmacion = true;
                 
                 try{
-                for(Usuario pers : control.getDir().getDirectorio()){
+                    
+            
+            
+            for(Usuario pers : control.getDir().getDirectorio()){
                     if(pers.getAlias().equals(alias)){
                    
-                        ventanaEmergente.mensaje("El alias registrado ya existe");
-                   
-                    
+                        
+                   confirmacion = true;
+                        
+                    break;
                     }else {
-                    
+                        
+                        confirmacion = false;
+                    }
+                    }
+            if(confirmacion == true){
+                ventanaEmergente.mensaje("El alias registrado ya existe");
+                
+                } else{
+                
             x.setAlias(alias);
             x.setContraseña(contraseña);
             x.setCorreo(correo);
             x.setGenero(genero);
             x.setEdad(edad);
+            
         v_registro.setVisible(false);
         ventanaEmergente.mensaje("El usuario fue registrado con èxito");
         v_registro.getNombreUsuario().setText("");
@@ -131,20 +143,24 @@ public class ControllerRegistroUsuario {
         enviarcorreo.enviarCorreo();
         ventanaEmergente.mensaje("Se enviò un mensaje a su correo electrònico confirmando sus datos");
         control.mostrarVentanaIniciarSesion();
-        
-         for(Usuario user : control.getDir().getDirectorio()){
-          
-             
-         }
-                }
-            }
+      x = null;
+      alias = null;
+      contraseña = null;
+      correo = null;
+      genero = null;
+      edad = 0;
+      
+                      }
+
                 }catch(Exception e){
                     
                 }
-        aux2=' ';   
-        } 
+            }aux2=' '; 
                 }
-        }
+          return null;
+        } 
+                
+        
     public void MostrarVentanaRegistro(){
         v_registro.setVisible(true);
     }
