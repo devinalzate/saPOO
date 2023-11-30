@@ -6,10 +6,8 @@ package co.edu.udistrital.controller;
 
 import co.edu.udistrital.model.Genero;
 import co.edu.udistrital.model.Usuario;
-import co.edu.udistrital.view.IniciarSesion;
 import co.edu.udistrital.view.VentanaEmergente;
 import co.edu.udistrital.view.VentanaRegistro;
-import java.util.HashSet;
 
 /**
  *  Clase encargada de controlar la ventana de registrar el usuario

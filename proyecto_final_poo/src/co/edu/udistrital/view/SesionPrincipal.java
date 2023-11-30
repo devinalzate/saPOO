@@ -62,7 +62,7 @@ public class SesionPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Bienvenido Sapo hpta");
+        jLabel1.setText("     ¡Bienvenido!");
 
         botonAgregarPareja.setText("Agregar Pareja");
         botonAgregarPareja.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +88,11 @@ public class SesionPrincipal extends javax.swing.JFrame {
         });
 
         pedirSobrecupo.setText("Pedir sobrecupo");
+        pedirSobrecupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pedirSobrecupoActionPerformed(evt);
+            }
+        });
 
         mostrarListaParejas.setText("Mostrar Lista de parejas");
         mostrarListaParejas.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +109,11 @@ public class SesionPrincipal extends javax.swing.JFrame {
         });
 
         botonCerrarSesion.setText("Cerrar Sesion");
+        botonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -122,12 +132,10 @@ public class SesionPrincipal extends javax.swing.JFrame {
                 .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
                 .addGap(115, 115, 115))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(87, 87, 87))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +264,7 @@ public class SesionPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mostrarListaParejasActionPerformed
 
     private void botonHorarioCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonHorarioCompraActionPerformed
-        // TODO add your handling code here:
+       sesionPrincipal.establecerHorarios();
     }//GEN-LAST:event_botonHorarioCompraActionPerformed
 
     private void botonDistribuirCupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDistribuirCupoActionPerformed
@@ -268,6 +276,18 @@ public class SesionPrincipal extends javax.swing.JFrame {
         sesionPrincipal.agregarParejas();
 
     }//GEN-LAST:event_botonAgregarParejaActionPerformed
+
+    private void pedirSobrecupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedirSobrecupoActionPerformed
+       
+        sesionPrincipal.pedirSobrecupo();
+        
+    }//GEN-LAST:event_pedirSobrecupoActionPerformed
+
+    private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
+       
+        sesionPrincipal.cerrarSesion();
+        
+    }//GEN-LAST:event_botonCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
