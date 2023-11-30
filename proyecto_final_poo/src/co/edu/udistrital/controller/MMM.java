@@ -18,6 +18,10 @@ public class MMM {
     private int precioFrijoles = 600;
     private int contadorLeche = 2;
     private int precioLeche = 500;
+    private int contadorArroz = 5;
+    private int precioArroz= 500;
+    private int contadorCondones = 10;
+    private int precioCondones = 1000;
     
     private ArrayList<Object>listaCompras = new ArrayList<>();
     
@@ -31,6 +35,12 @@ public class MMM {
         for (int i = 0 ; i < contadorLeche ; i++){
         listaCompras.add("Leche");
         }
+        for (int i = 0 ; i < contadorArroz ; i++){
+        listaCompras.add("arroz");
+        }
+        for (int i = 0 ; i < contadorCondones ; i++){
+        listaCompras.add("condones");
+        }
         
         int mediana = Math.round(listaCompras.size()/2);
         System.out.println(listaCompras);
@@ -40,8 +50,11 @@ public class MMM {
     public void media(){
         int mediaMan = precioManzana * contadorManzanas;
         int mediaFrij = precioManzana * contadorManzanas;
-        int mediaLeche = precioLeche = contadorLeche;
-        int media = (mediaMan + mediaFrij + mediaLeche)/3;
+        int mediaLeche = precioLeche * contadorLeche;
+        int mediaArroz = precioArroz * contadorArroz;
+        int mediaCondoes = precioCondones * contadorCondones;
+        int media = (mediaMan + mediaFrij + mediaLeche + mediaArroz + mediaCondoes)/5;
+        System.out.println("La media es: " + media);
     }
 
 }
