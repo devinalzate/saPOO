@@ -16,11 +16,13 @@ public class Controller {
     private Directorio dir;
     private Usuario usuarioIniciado=null;
     private Usuario nuevaPareja = null;
+    private MMM mmm = new MMM();
     ;
     /**
      * Inicializa los controladores de cada una de las ventanas.
      */
     public Controller() {
+        mmm.mediana();
         dir = new Directorio();
         controllerIniciarSesion = new ControllerIniciarSesion(this);
         controllerVentanaRegistro = new ControllerRegistroUsuario(this);
