@@ -23,6 +23,7 @@ public class Controller {
      */
     public Controller() {
         mmm.mediana();
+        mmm.media();
         dir = new Directorio();
         controllerIniciarSesion = new ControllerIniciarSesion(this);
         controllerVentanaRegistro = new ControllerRegistroUsuario(this);
