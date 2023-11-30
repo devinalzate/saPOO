@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 
 public class PDF {
 
-    public void prueba() {
+    public void generarEstadisticas() {
               
         Document document = new Document();
 
@@ -71,10 +71,10 @@ g.setFont(font3);
 g.setColor(Color.BLACK);
 g.drawString("Resultados del Análisis", 220, 100);
 
-// Aquí debes colocar el código para calcular la media, la mediana y la moda
-double media =1; // Reemplaza con el método o fórmula adecuada
-double mediana = 2; // Reemplaza con el método o fórmula adecuada
-double moda = 2; // Reemplaza con el método o fórmula adecuada
+
+double media =1; 
+double mediana = 2; 
+double moda = 2;
 
 Font font4 = new Font("Tahoma", Font.PLAIN, 15);
 g.setFont(font4);
@@ -83,7 +83,7 @@ g.drawString("Media: ________", 100, 200);
 g.drawString(String.format("Media: %.2f", media), 100, 200);
 
 Image imgModa = Image.getInstance(getClass().getResource("/imagenes/Logo.jpeg"));
-imgModa.setAbsolutePosition(100, 480);  // Ajusta la posición según tus necesidades
+imgModa.setAbsolutePosition(100, 480);  
 imgModa.scaleToFit(100, 100);
 document.add(imgModa);
 
@@ -94,7 +94,7 @@ g.drawString("Mediana: ________", 100, 320);
 g.drawString(String.format("Mediana: %.2f", mediana), 100, 320);
 
 Image imgMediana = Image.getInstance(getClass().getResource("/imagenes/Logo.jpeg"));
-imgMediana.setAbsolutePosition(100, 360);  // Ajusta la posición según tus necesidades
+imgMediana.setAbsolutePosition(100, 360);  
 imgMediana.scaleToFit(100, 100);
 document.add(imgMediana);
 
@@ -103,7 +103,7 @@ g.drawString("Moda: ________", 100, 440);
 g.drawString(String.format("Moda: %.2f", moda), 100, 440);
 
 Image imgMedia = Image.getInstance(getClass().getResource("/imagenes/Logo.jpeg"));
-imgMedia.setAbsolutePosition(100, 240);  // Ajusta la posición según tus necesidades
+imgMedia.setAbsolutePosition(100, 240);  
 imgMedia.scaleToFit(100, 100);
 document.add(imgMedia);
 
@@ -130,8 +130,14 @@ document.add(imgMedia);
                 "Se creo el archivo 'Sistemas de información HIDE & SEEK' en la carpeta del proyecto");
 }
 
+    public void generarRecibo() {
+        
+        
+        
+    }
+    
     public static void main(String[] args) {
         PDF obj = new PDF();
-        obj.prueba();
+        obj.generarEstadisticas();
     }
 }
