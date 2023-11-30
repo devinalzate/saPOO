@@ -36,6 +36,7 @@ public class ControllerSesionPrincipal {
         
        String nombrePareja = v_emergente.escribirInput("Escriba el nombre del usuario al que quiere agregar a su lista de parejas.");
        String mensaje = null;
+       
        for(Usuario usuarioARevision : control.getDir().getDirectorio()){
          
            
@@ -84,6 +85,10 @@ public class ControllerSesionPrincipal {
     
     public void asignarCupo(){
         
+        if (control.getUsuarioIniciado().getListaParejas().getParejas().isEmpty()){
+            v_emergente.mensaje("No tiene parejas registradas");
+        } else {
+        
         String parejaCupo = v_emergente.escribirInput("Esciba el nombre de la pareja a la que repartir el cupo");
         
         
@@ -121,9 +126,41 @@ break;
            
         }
            v_emergente.mensaje(mensaje);
+        }
+    }
+    
+    
+    public void mostrarDatosUsuario(){
+        
+        
+        v_emergente.mensaje( "Nombre: " + control.getUsuarioIniciado().getAlias() + "\n "
+                + "Correo: "+ control.getUsuarioIniciado().getCorreo() + "\n "
+                + "Edad:" + control.getUsuarioIniciado().getEdad() + "\n "
+                + "Genero: " + control.getUsuarioIniciado().getGenero().toString() + "\n "
+                + "Cupo disponible: " + control.getUsuarioIniciado().getCupo() + "\n "
+                );
+    }
+    
+    public void mostrarListaParejas(){
+        
+        if (control.getUsuarioIniciado().getListaParejas().getParejas().isEmpty()){
+            
+            v_emergente.mensaje("No hay parejas asignadas");
+        } else {
+        v_emergente.mensaje("Sus parejas son: ");
+        for (Usuario pareja :control.getUsuarioIniciado().getListaParejas().getParejas()){
+            
+             v_emergente.mensaje(pareja.getAlias());
+            }
+        }
         
     }
     
+    public void establecerHorarios(){
+        
+        
+        
+    }
     
     
     
